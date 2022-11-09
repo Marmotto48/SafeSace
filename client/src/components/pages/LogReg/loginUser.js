@@ -11,6 +11,12 @@ import {
   loginErrors,
 } from "../../../redux/userSlice";
 import Alert from "@mui/material/Alert";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import IconButton from "@mui/material/IconButton";
+import Collapse from "@mui/material/Collapse";
+import CloseIcon from "@mui/icons-material/Close";
+import Box from "@mui/material/Box";
 
 const LoginUser = () => {
   const dispatch = useDispatch();
@@ -47,9 +53,11 @@ const LoginUser = () => {
       <div className="pat-log-container">
         <div className="vector-pat-log">
           <img id="vector-pat-log-img" src={VectPat} alt="" />
+
           {user && user.registerErrors && (
             <>
               <h1>sqdqsd</h1>
+
               {console.log(user.registerErrors)}
               <Alert severity="error">{user.registerErrors}</Alert>
             </>

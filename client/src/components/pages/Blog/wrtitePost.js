@@ -22,10 +22,6 @@ const Addapost = () => {
     setPostInfo({ ...postInfo, description: value });
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   // dispatch(addpost({ postInfo }));
-  // };
   useEffect(() => {
     if (post) {
       console.log(post);
@@ -124,7 +120,6 @@ const Addapost = () => {
                   //   </Alert>
                   // </Stack>;
                   setPostInfo({});
-
                 }}
                 className="addPost-btn"
               >

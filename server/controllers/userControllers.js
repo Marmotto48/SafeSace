@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const cloudinary = require("../config/cloudinaryConfig");
 const User = require("../models/userSchema");
 const { registerValidation, loginValidation } = require("../middleware/Joi");
+const cache = require("../config/redisConfig");
 module.exports = {
   //register new user
   register: async (req, res) => {
@@ -204,7 +205,9 @@ module.exports = {
 
   getDoc: async (req, res) => {
     try {
-      const doc = await User.find({ role: "Doctor" }).select("-password");
+      const doc = await User.find({ role: "Doctor" })
+        .cache(120)
+        .select("-password");
       res.json(doc);
     } catch (error) {
       console.log(error);

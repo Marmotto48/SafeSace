@@ -12,12 +12,14 @@ const yaml = require("yamljs");
 const io = require("socket.io")(server, {
   cors: true,
   origins: ["http://127.0.0.1:5000"],
-  methods: ["GET", "POST"], 
+  methods: ["GET", "POST"],
   credentials: true,
 });
 const jwt = require("jsonwebtoken");
 const User = require("./models/userSchema");
 const Message = require("./models/messageSchema");
+
+////*********/////
 
 // --------------------------connect to the database------------------------------
 connectDB();
@@ -51,29 +53,6 @@ app.use(express.static(path.join(__dirname, "../", "client", "build")));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../", "client", "build", "index.html"));
 });
-// --------------------------Socket.io------------------------------
-// io.on("connection", (socket) => {
-//   console.log("socket connected");
-//   socket.on("setup", (userData) => {
-//     socket.join(userData._id);
-//     socket.emit("connected");
-//   });
-//   socket.on("join chat", (room) => {
-//     socket.join(room);
-//     console.log("User Joined Room: " + room);
-//   });
-//   socket.on("new message", (newMessageRecieved) => {
-//     var chat = newMessageRecieved.messeges;
-// console.log("test");
-//     // if (!chat.chats.users) return console.log("chat.users not defined");
-
-//     chat.users.forEach((user) => {
-//       if (user._id == newMessageRecieved.messeges.sender._id) return;
-
-//       socket.in(userData._id).emit("message recieved", newMessageRecieved);
-//     });
-//   });
-// });
 io.use(async (socket, next) => {
   try {
     const token = socket.handshake.query.token;
@@ -128,7 +107,11 @@ io.on("connection", (socket) => {
     }
   });
 });
-
+// REDIS //
+// cache.connect();
+// cache.on("connect", () => {
+//   console.log("connected");
+// });
 // --------------------------Swagger io------------------------------
 const swaggerDef = yaml.load("./swagger.yaml");
 app.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerDef));

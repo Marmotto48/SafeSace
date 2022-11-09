@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/marmotto/Desktop/SafeSace'
+make: Leaving directory '/home/marmotto/Desktop/SafeSace'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+

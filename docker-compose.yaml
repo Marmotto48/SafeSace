@@ -1,0 +1,85 @@
+version: "3.9"
+services:
+  app:
+    restart: always
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    container_name: SafeSpace-backend
+    volumes:
+      - /app/node_modules 
+      - ./server:/app
+    ports:
+      - 5000:5000
+    depends_on:
+      - mongodb
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - MONGO_URI= mongodb://${MONGO_ROOT_USERNAME}:${MONGO_ROOT_PASSWORD}@mongodb
+    networks:
+      - mern-app-network
+  mongodb:
+    image: mongo
+    restart: always
+    ports: 
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+    volumes:
+      - mongodb-data:/data/db
+    networks:
+      - mern-app-network
+  
+  mongo-express:
+    image: mongo-express
+    depends_on:
+      - mongodb
+    ports:
+      - 8081:8081
+    environment:
+       ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_ROOT_USERNAME}
+       ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_ROOT_PASSWORD}
+       ME_CONFIG_MONGODB_SERVER: mongodb
+       ME_CONFIG_BASICAUTH_USERNAME: admin
+       ME_CONFIG_BASICAUTH_PASSWORD: admin123456
+    volumes:
+      - mongodb-data
+    networks:
+      - mern-app-network
+  client:
+    restart: always
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    container_name: SafeSpace-frontend
+    # volumes:
+    #   - ./app/node_modules
+    #   - ./client:/app
+    ports:
+      - 3000:3000
+    depends_on:
+      - app
+    networks:
+      - mern-app-network
+  nginx:
+    restart: always
+    depends_on:
+      - app
+      - client
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.dev
+    ports:
+      - 808:80
+    networks:
+      - mern-app-network
+
+
+networks:
+  mern-app-network:
+    driver: bridge
+volumes:
+   mongodb-data:
+      driver: local
+

@@ -31,9 +31,6 @@ const Blog = () => {
         </span>
       </div>
       <div style={{ padding: "50px" }}>
-        <div className="blog-header-descrip">
-          <h3 className="title-css"> Articles</h3>
-        </div>
         <div className="blog-content">
           {error ? (
             <>Oh no, there was an error</>

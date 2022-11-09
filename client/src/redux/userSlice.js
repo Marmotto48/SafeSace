@@ -10,11 +10,9 @@ export const register = createAsyncThunk(
       if (result.status === 201) {
         return result.data;
       } else {
-        // console.log(result.data.msg);
         return rejectWithValue(result.data.msg);
       }
     } catch (error) {
-      // console.log(error.response);
       return rejectWithValue(
         error.response.data.msg
           ? error.response.data.msg

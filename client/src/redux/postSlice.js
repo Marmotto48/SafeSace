@@ -9,14 +9,11 @@ export const addpost = createAsyncThunk(
       const result = await axios.post("/blog/newpost", info.postInfo, {
         headers: { token: localStorage.getItem("token") },
       });
-      // console.log(result.data);
-      // dispatch(getPosts());
-      // dispatch(getPublicPosts());
       return result.data;
     } catch (error) {
-      return rejectWithValue(error.response.data.msg)
-        ? error.response.data.msg
-        : error.response.data.errors.password.msg;
+      return rejectWithValue(error.response.data.msg);
+      // ? console.log(error.response.data.msg)
+      // : error.response.data.errors.password.msg;
     }
   }
 );
@@ -170,6 +167,8 @@ const postSlice = createSlice({
   initialState: {
     posts: [],
     loading: false,
+    succeeded: false,
+    rejected: false,
     postErrors: null,
     postsErrors: null,
     post: {},
@@ -177,14 +176,20 @@ const postSlice = createSlice({
   extraReducers: {
     [addpost.pending]: (state) => {
       state.loading = true;
+      state.succeeded = false;
+      state.rejected = false;
     },
     [addpost.fulfilled]: (state, action) => {
       state.loading = false;
+      state.succeeded = true;
+      state.rejected = false;
       state.postErrors = null;
       state.post = action.payload;
     },
     [addpost.rejected]: (state, action) => {
       state.loading = false;
+      state.succeeded = false;
+      state.rejected = true;
       state.errors = action.payload;
     },
     [getPosts.pending]: (state) => {

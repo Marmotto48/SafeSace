@@ -1,4 +1,5 @@
 const Post = require("../models/postSchema");
+const cache = require("../config/redisConfig");
 
 //post routes controll
 module.exports = {
@@ -154,6 +155,7 @@ module.exports = {
         "author",
         "-password"
       );
+      // .cache(120);
       res.json(products);
     } catch (error) {
       console.log(error);

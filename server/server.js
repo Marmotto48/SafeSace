@@ -66,29 +66,22 @@ io.use(async (socket, next) => {
   }
 });
 io.on("connection", (socket) => {
-  console.log("Connected: " + socket.userID);
   socket.on("disconnect", () => {
-    console.log("Disconnected: " + socket.userID);
   });
   socket.on("joinRoom", ({ chatId }) => {
     socket.join(chatId);
-    console.log("A user joined chatroom: " + chatId);
   });
 
   socket.on("leaveRoom", ({ chatId }) => {
     socket.leave(chatId);
-    console.log("A user left chatroom: " + chatId);
   });
   socket.on("typing", (chatId) => {
     socket.in(chatId).emit("typing");
-    console.log(chatId);
   });
   socket.on("stop typing", (chatId) => socket.in(chatId).emit("stop typing"));
 
   socket.on("chatroomMessage", async ({ chat, message }) => {
     if (message.trim().length > 0) {
-      console.log(message);
-      console.log(chat._id);
       const user = await User.findOne({ _id: socket.userID });
       const newMessage = new Message({
         chat: chat._id,
@@ -110,7 +103,6 @@ io.on("connection", (socket) => {
 // REDIS //
 // cache.connect();
 // cache.on("connect", () => {
-//   console.log("connected");
 // });
 // --------------------------Swagger io------------------------------
 const swaggerDef = yaml.load("./swagger.yaml");

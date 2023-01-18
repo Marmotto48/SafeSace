@@ -78,6 +78,8 @@ BootstrapDialogTitle.propTypes = {
 };
 
 export default function SimpleDialogDemo({ chat, user, socket }) {
+
+  // ** States
   const [open, setOpen] = useState(false);
   //eslint-disable-next-line
   const [dense, setDense] = useState(false);
@@ -88,11 +90,14 @@ export default function SimpleDialogDemo({ chat, user, socket }) {
   const [messages, setMessages] = useState([]);
   const [selectedChat, setSelectedChat] = useState();
   const [userId, setUserId] = useState("");
+
+  // ** Hooks
   const msg = useSelector((state) => state.msg);
   const c = useSelector((state) => state.chat);
   const messageRef = useRef();
   const [notification, setNotification] = useState([]);
 
+  // ** Functions
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -107,19 +112,19 @@ export default function SimpleDialogDemo({ chat, user, socket }) {
   };
   //--------------------------------------remove Member----------------------------//
   const HandleRemoveMember = (e, chat, user1) => {
-    if (chat.groupAdmin._id !== user._id && user1._id !== user._id) {
+    if (chat.groupAdmin?._id !== user?._id && user1?._id !== user?._id) {
       alert("You are not the admin of this group!");
       return;
     }
     e.preventDefault();
-    dispatch(removeMember({ chatId: chat._id, userId: user1._id }));
+    dispatch(removeMember({ chatId: chat?._id, userId: user1?._id }));
   };
   //--------------------------------------add Member----------------------------//
   const handleAddMember = (e, chatId) => {
     dispatch(
       addMember({
         chatId,
-        userId: JSON.stringify(users.map((u) => u._id)),
+        userId: JSON.stringify(users.map((u) => u?._id)),
       })
     );
   };
@@ -179,15 +184,15 @@ export default function SimpleDialogDemo({ chat, user, socket }) {
         <li className="item" style={{ marginBottom: "40px" }}>
           <input
             type="radio"
-            id={chat._id}
+            id={chat?._id}
             name="basic_carousel"
-            value={chat._id}
+            value={chat?._id}
             defaultChecked
           />
-          <label htmlFor={chat._id}>
+          <label htmlFor={chat?._id}>
             <ListItem
               onClick={(e) => {
-                setSelectedChat(chat._id);
+                setSelectedChat(chat?._id);
               }}
               alignItems="flex-start"
               s
@@ -215,7 +220,7 @@ export default function SimpleDialogDemo({ chat, user, socket }) {
                           alt="Remy Sharp"
                           src={user.avatar.imageURL}
                           style={{ border: 0 }}
-                          key={user._id}
+                          key={user?._id}
                         />
                       );
                     })}
@@ -252,7 +257,7 @@ export default function SimpleDialogDemo({ chat, user, socket }) {
               <h3 className="box-title">{chat.chatName}</h3>
               <br />
               <h3 className="box-title">
-                {chat._id} = {c.chat._id}
+                {chat?._id} = {c.chat?._id}
               </h3>
               <div className="box-tools pull-right">
                 <button
@@ -261,30 +266,20 @@ export default function SimpleDialogDemo({ chat, user, socket }) {
                   data-toggle="tooltip"
                   title="Contacts"
                   data-widget="chat-pane-toggle"
-                >
-                  {/* <AiOutlineClose onClick={handleClose} /> */}
-                </button>
+                ></button>
               </div>
             </div>
             <div className="box-body">
               <div className="direct-chat-messages">
                 {messages.map((message, i) => (
-                  <div key={message._id}>
-                    {message.chatID === chat._id && (
+                  <div key={message?._id}>
+                    {message.chatID === chat?._id && (
                       <>
                         {userId === message.userID ? (
                           <div
                             className="direct-chat-msg right"
                             style={{ textAlign: "right" }}
                           >
-                            {/* <div className="direct-chat-info clearfix">
-                                    <span className="direct-chat-name pull-right"   >
-                                      {message.name}
-                                    </span>
-                                    <span className="direct-chat-timestamp pull-left">
-                                      23 Jan 2:05 pm
-                                    </span>
-                                  </div> */}
                             <img
                               className="direct-chat-img"
                               src={message.avatar.imageURL}
@@ -320,8 +315,8 @@ export default function SimpleDialogDemo({ chat, user, socket }) {
                 ))}
                 {msg.messages &&
                   msg.messages.map((message) => (
-                    <div key={message._id}>
-                      {userId === message.sender._id ? (
+                    <div key={message?._id}>
+                      {userId === message.sender?._id ? (
                         <div
                           className="direct-chat-msg right"
                           style={{ textAlign: "right" }}
@@ -412,7 +407,7 @@ export default function SimpleDialogDemo({ chat, user, socket }) {
               />
               <IconButton
                 onClick={(e) => {
-                  handleUpdateSubmit(e, chat._id);
+                  handleUpdateSubmit(e, chat?._id);
                 }}
               >
                 <BsCheckCircle
@@ -434,7 +429,7 @@ export default function SimpleDialogDemo({ chat, user, socket }) {
                   }}
                 >
                   {chat.users.map((user) => (
-                    <div key={user._id}>
+                    <div key={user?._id}>
                       <ListItem
                         // {chat.groupAdmin.id === user.id ? (<></>):(<></>)}
                         secondaryAction={
@@ -462,7 +457,7 @@ export default function SimpleDialogDemo({ chat, user, socket }) {
                               >
                                 {user.role}
                               </Typography>
-                              {user._id === chat.groupAdmin._id
+                              {user?._id === chat.groupAdmin?._id
                                 ? " — Admin"
                                 : " — Member"}
                             </React.Fragment>
@@ -503,7 +498,7 @@ export default function SimpleDialogDemo({ chat, user, socket }) {
                     component="h2"
                   >
                     Text in a modal
-                    <IconButton onClick={(e) => handleAddMember(e, chat._id)}>
+                    <IconButton onClick={(e) => handleAddMember(e, chat?._id)}>
                       <BsCheckCircle
                         style={{
                           fontSize: "22px",

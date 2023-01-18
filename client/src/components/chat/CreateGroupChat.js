@@ -9,7 +9,11 @@ import DialogActions from "@mui/material/DialogActions";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import TextField from "@mui/material/TextField";
-
+import {
+  AiOutlineUserAdd,
+  AiOutlineUsergroupAdd,
+  AiOutlineSearch,
+} from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { getUsers } from "../../redux/userSlice";
 import { addGroupChatroom } from "../../redux/chatSlice";
@@ -54,7 +58,7 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function CreateGroup({ open, setOpen, user }) {
+export default function CreateGroup({ user }) {
   const dispatch = useDispatch();
 
   const handleClose = () => {
@@ -77,8 +81,20 @@ export default function CreateGroup({ open, setOpen, user }) {
     setName("");
     setUsers([]);
   };
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => setOpen(true);
+
   return (
     <div>
+      <AiOutlineUsergroupAdd
+        style={{
+          fontSize: "25px",
+          cursor: "pointer",
+          marginLeft: "20px",
+        }}
+        onClick={handleOpen}
+      />
       <BootstrapDialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"

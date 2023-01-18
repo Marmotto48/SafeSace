@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Nov  9 15:59:51 2022
+# Make data base, printed on Wed Jan 18 19:36:28 2023
 
 # Variables
 
@@ -17,15 +17,11 @@ GDK_BACKEND = x11
 # environment
 LC_ALL = C
 # environment
-NO_AT_BRIDGE = 1
-# environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
 SSH_AGENT_LAUNCHER = gnome-keyring
 # environment
 SNAP_INSTANCE_KEY = 
-# environment
-GJS_DEBUG_OUTPUT = stderr
 # environment
 MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
 # environment
@@ -33,7 +29,7 @@ LC_NAME = en_CA.UTF-8
 # environment
 LC_NUMERIC = en_CA.UTF-8
 # environment
-VSCODE_CWD = /home/marmotto/Desktop/SafeSace
+VSCODE_CWD = /home/marmotto/Desktop/SafeSpace
 # environment
 WINDOWPATH = 2
 # environment
@@ -49,13 +45,13 @@ QT_ACCESSIBILITY = 1
 # environment
 SNAP_INSTANCE_NAME = code
 # environment
-GDK_PIXBUF_MODULEDIR = /snap/code/112/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
+GDK_PIXBUF_MODULEDIR = /snap/code/117/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
 .VARIABLES := 
 # environment
-PWD = /home/marmotto/Desktop/SafeSace
+PWD = /home/marmotto/Desktop/SafeSpace
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
@@ -67,7 +63,7 @@ XDG_DATA_DIRS = /usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/
 # environment
 NVM_INC = /home/marmotto/.nvm/versions/node/v14.15.0/include/node
 # environment
-VSCODE_CODE_CACHE_PATH = /home/marmotto/.config/Code/CachedData/8fa188b2b301d36553cbc9ce1b0a146ccb93351f
+VSCODE_CODE_CACHE_PATH = /home/marmotto/.config/Code/CachedData/97dec172d3256f8ca4bfb2143f3f76b503ca0534
 # environment
 LANG = C
 # environment
@@ -77,11 +73,13 @@ XAUTHORITY = /run/user/1000/gdm/Xauthority
 # default
 .INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
 # environment
-GNOME_TERMINAL_SERVICE = :1.1586
+GNOME_TERMINAL_SERVICE = :1.163
 # makefile
 MAKEFLAGS = pqrR
+# environment
+DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=4467eda9cb30a84bb1a8b8ca63c8388c
 # makefile
-CURDIR := /home/marmotto/Desktop/SafeSace
+CURDIR := /home/marmotto/Desktop/SafeSpace
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
@@ -109,21 +107,19 @@ SNAP_REEXEC =
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 8824
+VSCODE_PID = 19227
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
-# environment
-SESSION_MANAGER = local/marmotto-TECRA-A50-C:@/tmp/.ICE-unix/3099,unix/marmotto-TECRA-A50-C:/tmp/.ICE-unix/3099
+SESSION_MANAGER = local/marmotto-TECRA-A50-C:@/tmp/.ICE-unix/2914,unix/marmotto-TECRA-A50-C:/tmp/.ICE-unix/2914
 # automatic
 *F = $(notdir $*)
 # environment
 CHROME_DESKTOP = code-url-handler.desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=4467eda9cb30a84bb1a8b8ca63c8388c
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # environment
@@ -139,11 +135,9 @@ MAKECMDGOALS := all
 # environment
 XMODIFIERS = @im=ibus
 # environment
-GJS_DEBUG_TOPICS = JS ERROR;JS LOG
-# environment
 SHLVL = 1
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/2e7b7543_b1d5_4c85_ad11_09e14f6df739
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/1fc077c2_6e65_4d36_a02a_2fba8857f94e
 # environment
 MAKELEVEL := 0
 # default
@@ -163,11 +157,9 @@ SNAP_USER_COMMON = /home/marmotto/snap/code/common
 # environment
 LC_TIME = en_CA.UTF-8
 # environment
-SNAP = /snap/code/112
+SNAP = /snap/code/117
 # environment
-INVOCATION_ID = ac0c38bc04384df682fb3282053c64ba
-# environment
-SNAP_REVISION = 112
+SNAP_REVISION = 117
 # environment
 SNAP_REAL_HOME = /home/marmotto
 # environment
@@ -187,20 +179,17 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 # environment
 DESKTOP_SESSION = ubuntu
 # environment
- 
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # 'override' directive
 GNUMAKEFLAGS := 
 # environment
 LOGNAME = marmotto
 # environment
-GIO_LAUNCHED_DESKTOP_FILE = /var/lib/snapd/desktop/applications/code_code.desktop
-# environment
 SNAP_ARCH = amd64
 # makefile
 .DEFAULT_GOAL := 
 # environment
-SYSTEMD_EXEC_PID = 3118
+SYSTEMD_EXEC_PID = 2914
 # environment
 DISPLAY = :0
 # environment
@@ -212,15 +201,13 @@ DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
 # default
 MAKE_VERSION := 4.3
 # environment
-SNAP_DATA = /var/snap/code/112
+SNAP_DATA = /var/snap/code/117
 # environment
 SNAP_CONTEXT = 2iTOOF86L_vkZHtfiNjemSGMsdbx8Eu0nXbfSC3N4bRHHYVGDq0g
 # environment
-MANAGERPID = 2499
+DBUS_STARTER_BUS_TYPE = session
 # environment
 LC_MEASUREMENT = en_CA.UTF-8
-# environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 8778
 # environment
 LC_PAPER = en_CA.UTF-8
 # environment
@@ -234,8 +221,6 @@ GDK_PIXBUF_MODULE_FILE = /home/marmotto/snap/code/common/.cache/gdk-pixbuf-loade
 # environment
 NVM_CD_FLAGS = 
 # environment
-JOURNAL_STREAM = 8:30496
-# environment
 XDG_SESSION_CLASS = user
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
@@ -246,13 +231,13 @@ QT_IM_MODULE = ibus
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-b46db433-1.73.0-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-b46db433-1.74.3-main.sock
 # environment
 TERM = xterm-256color
 # environment
 SNAP_NAME = code
 # environment
-GSETTINGS_SCHEMA_DIR = /snap/code/112/usr/share/glib-2.0/schemas
+GSETTINGS_SCHEMA_DIR = /snap/code/117/usr/share/glib-2.0/schemas
 # environment
 PAPERSIZE = letter
 # default
@@ -260,7 +245,7 @@ PAPERSIZE = letter
 # automatic
 <F = $(notdir $<)
 # environment
-SNAP_VERSION = 8fa188b2
+SNAP_VERSION = 97dec172
 # default
 SUFFIXES := 
 # environment
@@ -274,7 +259,7 @@ SNAP_COMMON = /var/snap/code/common
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
 # environment
-SNAP_USER_DATA = /home/marmotto/snap/code/112
+SNAP_USER_DATA = /home/marmotto/snap/code/117
 # environment
 XDG_MENU_PREFIX = gnome-
 # environment
@@ -284,7 +269,7 @@ LC_IDENTIFICATION = en_CA.UTF-8
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # variable set hash-table stats:
-# Load=135/1024=13%, Rehash=0, Collisions=12/162=7%
+# Load=128/1024=12%, Rehash=0, Collisions=13/155=8%
 
 # Pattern-specific Variable Values
 
@@ -292,8 +277,9 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 
 # Directories
 
-# . (device 2055, inode 420900): 14 files, no impossibilities.
+# . (device 2053, inode 567966): 14 files, no impossibilities.
 
+ 
 # 14 files, no impossibilities in 1 directories.
 
 # Implicit Rules
@@ -305,7 +291,6 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
- 
 #  File does not exist.
 #  File has been updated.
 #  Failed to be updated.
@@ -351,6 +336,6 @@ GNUmakefile:
 # strcache performance: lookups = 25 / hit rate = 12%
 # hash-table stats:
 # Load=22/8192=0%, Rehash=0, Collisions=0/25=0%
-# Finished Make data base on Wed Nov  9 15:59:51 2022
+# Finished Make data base on Wed Jan 18 19:36:29 2023
 
  

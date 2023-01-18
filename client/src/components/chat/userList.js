@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
@@ -11,6 +11,7 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import List from "@mui/material/List";
 import { addChatroom } from "../../redux/chatSlice";
+import { AiOutlineUserAdd } from "react-icons/ai";
 
 const style = {
   position: "absolute",
@@ -26,23 +27,26 @@ const style = {
   overflow: "auto",
 };
 
-export default function BasicModal({ open, setOpen, user }) {
+export default function BasicModal({ user }) {
+  const [open, setOpen] = useState(false);
+
   const handleClose = () => setOpen(false);
   const dispatch = useDispatch();
-
-  // const handleSubmit = (userId) => {
-  //   // e.preventDefault();
-  //   dispatch(addChatroom({ data: userId }));
-  //   console.log(userId);
-  // };
   const addMember = (userId) => {
     dispatch(addChatroom({ userId: userId }));
   };
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
+
+  const handleOpen = () => setOpen(true);
+
   return (
     <div>
+      <AiOutlineUserAdd
+        style={{ fontSize: "25px", cursor: "pointer" }}
+        onClick={handleOpen}
+      />
       <Modal
         open={open}
         onClose={handleClose}
